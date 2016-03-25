@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 
 /**
  * 
- * @file FileEnumeartionTask.java
+ * @file FileEnumerationTask.java
  * @author deadend
  * @date Mar 25, 2016
  * @version 1.0
@@ -13,10 +13,9 @@ import java.util.concurrent.BlockingQueue;
  *
  */
 
-public class FileEnumeartionTask implements Runnable {
+public class FileEnumerationTask extends Task {
 	
 	public static final File DUMMY = new File("");
-	private BlockingQueue<File> queue;
 	private File startDirectory;
 	
 	/**
@@ -24,8 +23,8 @@ public class FileEnumeartionTask implements Runnable {
 	 * @param queue: 存放文件的队列
 	 * @param keyword: 关键字
 	 */
-	public FileEnumeartionTask(BlockingQueue<File> queue, File startDirectory) {
-		this.queue = queue;
+	public FileEnumerationTask(BlockingQueue<File> queue, File startDirectory) {
+		super(queue);
 		this.startDirectory = startDirectory;
 	}
 
@@ -39,7 +38,7 @@ public class FileEnumeartionTask implements Runnable {
 	
 	/**
 	 * 递归枚举目录下的文件
-	 * @throws InterruptedException 
+	 * @throws InterruptedException
 	 */
 	public void enumerate(File diretory) throws InterruptedException {
 		File[] files = diretory.listFiles();

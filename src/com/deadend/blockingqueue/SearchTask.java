@@ -15,9 +15,8 @@ import java.util.concurrent.BlockingQueue;
  *
  */
 
-public class SearchTask implements Runnable {
+public class SearchTask extends Task {
 	
-	private BlockingQueue<File> queue;
 	private String keyword;
 	
 	/**
@@ -26,7 +25,7 @@ public class SearchTask implements Runnable {
 	 * @param keyword: 关键词
 	 */
 	public SearchTask(BlockingQueue<File> queue, String keyword) {
-		this.queue = queue;
+		super(queue);
 		this.keyword = keyword;
 	}
 
@@ -36,8 +35,8 @@ public class SearchTask implements Runnable {
 			boolean done = false;
 			while(!done) {
 				File file = queue.take();
-				if (file == FileEnumeartionTask.DUMMY) {
-					queue.put(FileEnumeartionTask.DUMMY);
+				if (file == FileEnumerationTask.DUMMY) {
+					queue.put(FileEnumerationTask.DUMMY);
 					done = true;
 				} else {
 					search(file);
