@@ -1,4 +1,4 @@
-package com.deadend.blockingqueue;
+package com.deadend.future;
 
 import java.io.File;
 import java.util.concurrent.BlockingQueue;
@@ -13,7 +13,7 @@ import java.util.concurrent.BlockingQueue;
  *
  */
 
-public class FileEnumerationTask extends Task {
+public class FileEnumerationTask extends Task implements Runnable {
 	
 	/** 虚拟对象，用于标识搜索完毕，使搜索线程退出 */
 	public static final File DUMMY = new File("");
@@ -31,18 +31,10 @@ public class FileEnumerationTask extends Task {
 		this.startDirectory = startDirectory;
 	}
 	
-
-	@Override
-	public void run() {
-		try {
-			enumerate(startDirectory);
-			queue.put(DUMMY);
-		} catch (InterruptedException e) {}
-	}
-	
 	
 	/**
 	 * 递归枚举目录下的文件
+	 * @param directory: 目录
 	 * @throws InterruptedException
 	 */
 	public void enumerate(File diretory) throws InterruptedException {
@@ -54,5 +46,15 @@ public class FileEnumerationTask extends Task {
 				queue.put(file);
 			}
 		}
+	}
+	
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		try {
+			enumerate(startDirectory);
+			queue.put(DUMMY);
+		} catch (InterruptedException e) {}
 	}
 }

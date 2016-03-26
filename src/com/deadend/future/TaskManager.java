@@ -1,4 +1,4 @@
-package com.deadend.blockingqueue;
+package com.deadend.future;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -6,6 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.FutureTask;
 
 /**
  * 
@@ -31,7 +34,9 @@ public class TaskManager {
 	private BlockingQueue<File> queue = new ArrayBlockingQueue<>(FILE_QUEUE_SIZE);
 	/** 存储线程 */
 	private List<Thread> tasks = new ArrayList<>();
-	
+	/** 线程运行结果 */
+	private List<Future<List<Statistic>>> results = new ArrayList<>();
+
 	
 	/**
 	 * 构造函数
@@ -50,26 +55,32 @@ public class TaskManager {
 	public void build() {
 		tasks.add(new Thread(new FileEnumerationTask(queue, new File(path))));
 		for (int i = 1; i<= SEARCH_THREADS; i++) {
-			tasks.add(new Thread(new SearchTask(queue, keyword)));
+			FutureTask<List<Statistic>> task = new FutureTask<>(new SearchTask(queue, keyword));
+			results.add(task);
+			tasks.add(new Thread(task));
 		}
 	}
 	
 	
 	/**
-	 * 启动线程
+	 * 启动线程，获取结果
 	 */
-	public void run() {
+	public List<Statistic> run() {
 		for(Thread t: tasks) {
 			t.start();
 		}
 		
-		for(Thread t: tasks) {
+		List<Statistic> statList = new ArrayList<>();
+		for(Future<List<Statistic>> result: results) {
 			try {
-				t.join();
+				statList.addAll(result.get());
 			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
 		}
+		return statList;
 	}
 	
 
@@ -81,8 +92,12 @@ public class TaskManager {
 			String keyword = in.nextLine();
 			TaskManager taskManager = new TaskManager(path, keyword);
 			taskManager.build();
-			taskManager.run();
-			System.out.println("Tasks done.");
+			List<Statistic> statList = taskManager.run();
+			
+			for(Statistic stat: statList) {
+				System.out.println(stat.toString());
+			}
+			System.out.printf("Tasks done. Total: %d%n", statList.size());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

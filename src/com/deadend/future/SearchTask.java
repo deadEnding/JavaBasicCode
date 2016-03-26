@@ -1,9 +1,12 @@
-package com.deadend.blockingqueue;
+package com.deadend.future;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Callable;
 
 /**
  * 
@@ -15,10 +18,12 @@ import java.util.concurrent.BlockingQueue;
  *
  */
 
-public class SearchTask extends Task {
+public class SearchTask extends Task implements Callable<List<Statistic>>{
 	
 	/** 关键字 */
 	private String keyword;
+	/** 存储统计结果，线程间不共享 */
+	private List<Statistic> statList;
 	
 	
 	/**
@@ -29,11 +34,12 @@ public class SearchTask extends Task {
 	public SearchTask(BlockingQueue<File> queue, String keyword) {
 		super(queue);
 		this.keyword = keyword;
+		statList = new ArrayList<>();
 	}
-
+	
 	
 	@Override
-	public void run() {
+	public List<Statistic> call() throws Exception {
 		try {
 			boolean done = false;
 			while(!done) {
@@ -48,9 +54,11 @@ public class SearchTask extends Task {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {}
+		
+		return statList;
 	}
 	
-	
+
 	/**
 	 * 搜索关键字
 	 * @param file: 文件名
@@ -62,12 +70,11 @@ public class SearchTask extends Task {
 				lineNumber++;
 				String line = in.nextLine();
 				if (line.contains(keyword)) {
-					System.out.printf("%s:%d:%s%n", file.getPath(), lineNumber, line);
+					statList.add(new Statistic(line, file.getPath(), lineNumber));
 				}
 			}
 		}
 	}
-	
 }
 
 

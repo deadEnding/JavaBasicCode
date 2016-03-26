@@ -1,4 +1,4 @@
-package com.deadend.blockingqueue;
+package com.deadend.future;
 
 import java.io.File;
 import java.util.concurrent.BlockingQueue;
@@ -13,7 +13,7 @@ import java.util.concurrent.BlockingQueue;
  *
  */
 
-public abstract class Task implements Runnable {
+public abstract class Task {
 	
 	/** 阻塞队列 */
 	protected BlockingQueue<File> queue;
