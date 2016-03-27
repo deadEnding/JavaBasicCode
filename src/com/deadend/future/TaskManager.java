@@ -27,7 +27,7 @@ public class TaskManager {
 	/** 启动的搜索线程数 */
 	private static final int SEARCH_THREADS = 100;
 	/** 搜索根路径 */
-	private String path;
+	private String directory;
 	/** 关键字 */
 	private String keyword;
 	/** 阻塞队列，用于存储文件名 */
@@ -40,11 +40,11 @@ public class TaskManager {
 	
 	/**
 	 * 构造函数
-	 * @param path: 搜索关键词的根路径
+	 * @param directory: 搜索关键词的根路径
 	 * @param keyword: 关键词
 	 */
-	public TaskManager(String path, String keyword) {
-		this.path = path;
+	public TaskManager(String directory, String keyword) {
+		this.directory = directory;
 		this.keyword = keyword;
 	}
 	
@@ -53,7 +53,12 @@ public class TaskManager {
 	 * 创建线程
 	 */
 	public void build() {
-		tasks.add(new Thread(new FileEnumerationTask(queue, new File(path))));
+		File file = new File(directory);
+		if(!file.exists()) {
+			System.out.printf("Directory \"%s\" doesn't exist.", directory);
+			System.exit(0);
+		}
+		tasks.add(new Thread(new FileEnumerationTask(queue, file)));
 		for (int i = 1; i<= SEARCH_THREADS; i++) {
 			FutureTask<List<Statistic>> task = new FutureTask<>(new SearchTask(queue, keyword));
 			results.add(task);
@@ -87,10 +92,10 @@ public class TaskManager {
 	public static void main(String[] args) {
 		try(Scanner in = new Scanner(System.in)) {
 			System.out.print("Enter base directory (e.g. /home/deadend/test): ");
-			String path = in.nextLine();
+			String directory = in.nextLine();
 			System.out.print("Enter keyword (e.g. equator): ");
 			String keyword = in.nextLine();
-			TaskManager taskManager = new TaskManager(path, keyword);
+			TaskManager taskManager = new TaskManager(directory, keyword);
 			taskManager.build();
 			List<Statistic> statList = taskManager.run();
 			

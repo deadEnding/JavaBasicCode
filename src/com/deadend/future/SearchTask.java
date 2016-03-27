@@ -61,7 +61,7 @@ public class SearchTask extends Task implements Callable<List<Statistic>>{
 
 	/**
 	 * 搜索关键字
-	 * @param file: 文件名
+	 * @param file: 文件
 	 */
 	public void search(File file) throws IOException {
 		try (Scanner in = new Scanner(file)) {
