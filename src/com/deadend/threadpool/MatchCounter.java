@@ -97,17 +97,3 @@ public class MatchCounter implements Callable<Integer> {
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
