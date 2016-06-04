@@ -1,11 +1,11 @@
-package com.deadend.forkjoin;
+package com.deadend.concurrent.forkjoin;
 
 import java.util.concurrent.RecursiveTask;
 
 /**
  * 
  * @file Counter.java
- * @author deadend
+ * @author concurrent
  * @date Mar 27, 2016
  * @version 1.0
  * @description 计数器 

@@ -1,4 +1,4 @@
-package com.deadend.future;
+package com.deadend.concurrent.future;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +11,7 @@ import java.util.concurrent.Callable;
 /**
  * 
  * @file SearchTask.java
- * @author deadend
+ * @author concurrent
  * @date Mar 25, 2016
  * @version 1.0
  * @description 搜索关键词

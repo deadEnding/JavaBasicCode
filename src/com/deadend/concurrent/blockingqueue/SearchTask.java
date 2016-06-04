@@ -1,4 +1,4 @@
-package com.deadend.blockingqueue;
+package com.deadend.concurrent.blockingqueue;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,7 +8,7 @@ import java.util.concurrent.BlockingQueue;
 /**
  * 
  * @file SearchTask.java
- * @author deadend
+ * @author concurrent
  * @date Mar 25, 2016
  * @version 1.0
  * @description 搜索关键词

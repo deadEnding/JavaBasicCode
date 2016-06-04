@@ -1,9 +1,9 @@
-package com.deadend.forkjoin;
+package com.deadend.concurrent.forkjoin;
 
 /**
  * 
  * @file Filter.java
- * @author deadend
+ * @author concurrent
  * @date Mar 27, 2016
  * @version 1.0
  * @description 过滤器接口 

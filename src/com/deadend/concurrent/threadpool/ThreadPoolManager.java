@@ -1,4 +1,4 @@
-package com.deadend.threadpool;
+package com.deadend.concurrent.threadpool;
 
 import java.io.File;
 import java.util.Scanner;
@@ -12,7 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 /**
  * 
  * @file ThreadPoolManager.java
- * @author deadend
+ * @author concurrent
  * @date Mar 27, 2016
  * @version 1.0
  * @description 管理线程池
@@ -86,7 +86,7 @@ public class ThreadPoolManager {
 
 	public static void main(String[] args) {
 		try(Scanner in = new Scanner(System.in)) {
-			System.out.print("Enter base directory (e.g. /home/deadend/test): ");
+			System.out.print("Enter base directory (e.g. /home/concurrent/test): ");
 			String directory = in.nextLine();
 			System.out.print("Enter keyword (e.g. equator): ");
 			String keyword = in.nextLine();

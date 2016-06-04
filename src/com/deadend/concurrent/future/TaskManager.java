@@ -1,4 +1,4 @@
-package com.deadend.future;
+package com.deadend.concurrent.future;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -13,7 +13,7 @@ import java.util.concurrent.FutureTask;
 /**
  * 
  * @file TaskManager.java
- * @author deadend
+ * @author concurrent
  * @date Mar 25, 2016
  * @version 1.0
  * @description 管理任务
@@ -91,7 +91,7 @@ public class TaskManager {
 
 	public static void main(String[] args) {
 		try(Scanner in = new Scanner(System.in)) {
-			System.out.print("Enter base directory (e.g. /home/deadend/test): ");
+			System.out.print("Enter base directory (e.g. /home/concurrent/test): ");
 			String directory = in.nextLine();
 			System.out.print("Enter keyword (e.g. equator): ");
 			String keyword = in.nextLine();

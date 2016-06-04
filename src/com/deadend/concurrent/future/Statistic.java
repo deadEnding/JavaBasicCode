@@ -1,10 +1,10 @@
-package com.deadend.future;
+package com.deadend.concurrent.future;
 
 
 /**
  * 
  * @file Statistic.java
- * @author deadend
+ * @author concurrent
  * @date Mar 25, 2016
  * @version 1.0
  * @description 搜索结果的统计信息 

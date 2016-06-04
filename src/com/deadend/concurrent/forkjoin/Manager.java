@@ -1,4 +1,4 @@
-package com.deadend.forkjoin;
+package com.deadend.concurrent.forkjoin;
 
 import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.RecursiveTask;

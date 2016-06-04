@@ -1,4 +1,4 @@
-package com.deadend.threadpool;
+package com.deadend.concurrent.threadpool;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import java.util.concurrent.Future;
 /**
  * 
  * @file MatchCounter.java
- * @author deadend
+ * @author concurrent
  * @date Mar 27, 2016
  * @version 1.0
  * @description 对关键词搜索并计数 

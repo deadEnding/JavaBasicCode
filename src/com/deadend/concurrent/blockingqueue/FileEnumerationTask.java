@@ -1,4 +1,4 @@
-package com.deadend.blockingqueue;
+package com.deadend.concurrent.blockingqueue;
 
 import java.io.File;
 import java.util.concurrent.BlockingQueue;
@@ -6,7 +6,7 @@ import java.util.concurrent.BlockingQueue;
 /**
  * 
  * @file FileEnumerationTask.java
- * @author deadend
+ * @author concurrent
  * @date Mar 25, 2016
  * @version 1.0
  * @description 枚举目录下的文件
