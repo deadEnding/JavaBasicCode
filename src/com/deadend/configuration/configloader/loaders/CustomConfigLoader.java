@@ -11,7 +11,9 @@ import java.util.Properties;
  * @author: deadend
  * @date: 12:49 AM 6/5/16
  * @version: 1.0
- * @description:
+ * @description: 自定义配置加载器
+ *
+ * @ps 在使用时，需要定义CustomConfig类和CustomConfigLoader类，其中CustomConfigLoader类需要定义构造函数并重写load(P)方法
  */
 
 
@@ -21,12 +23,22 @@ public class CustomConfigLoader extends AbstractConfigLoader<CustomConfig, Prope
         super(provider);
     }
 
+    /**
+     * 从Provider提供的Properties对象加载配置的具体实现
+     *
+     * @see AbstractConfigLoader#load()
+     *
+     * @param prop
+     * @return CustomConfig
+     * @throws ConfigException
+     */
     public CustomConfig load(Properties prop) throws ConfigException {
         CustomConfig customConfig = new CustomConfig();
         customConfig.setName(prop.getProperty("name"));
         customConfig.setAge(Integer.parseInt(prop.getProperty("age")));
         return customConfig;
     }
+
 
     public static void main(String[] args) {
         String filePath = "/tmp/test.properties";

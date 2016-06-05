@@ -4,7 +4,7 @@ package com.deadend.configuration.configloader.configs;
  * @author: deadend
  * @date: 12:51 AM 6/5/16
  * @version: 1.0
- * @description:
+ * @description: 自定义配置类
  */
 
 
