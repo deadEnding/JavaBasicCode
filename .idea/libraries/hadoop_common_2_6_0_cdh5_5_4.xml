@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="hadoop-common-2.6.0-cdh5.5.4">
+    <CLASSES>
+      <root url="jar:///opt/bigdata/hadoop-2.6.0-cdh5.5.4/share/hadoop/common/hadoop-common-2.6.0-cdh5.5.4.jar!/" />
+      <root url="jar:///opt/bigdata/hadoop-2.6.0-cdh5.5.4/share/hadoop/mapreduce2/hadoop-mapreduce-client-core-2.6.0-cdh5.5.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
