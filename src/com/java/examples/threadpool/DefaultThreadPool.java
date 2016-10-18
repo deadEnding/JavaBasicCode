@@ -25,7 +25,7 @@ public class DefaultThreadPool<Job extends Runnable> implements ThreadPool<Job> 
     // 任务列表
     private final LinkedList<Job> jobs = new LinkedList<>();
 
-    // Worker列表
+    // Worker列表，线程安全（保证多线程在执行pool.addWorkders和pool.removeWorkers时安全）
     private final List<Worker> workers = Collections.synchronizedList(new ArrayList<Worker>());
 
     // Worker数量
