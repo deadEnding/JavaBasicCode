@@ -13,7 +13,12 @@ public class SynchroTimerTask extends TimerTask {
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
-		System.out.println("[INFO] " + m_log);
-	}
+		System.out.println("[INFO] " + System.currentTimeMillis() + " " + m_log);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 	
 }

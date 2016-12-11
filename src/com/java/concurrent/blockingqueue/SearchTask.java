@@ -62,7 +62,7 @@ public class SearchTask extends Task {
 				lineNumber++;
 				String line = in.nextLine();
 				if (line.contains(keyword)) {
-					System.out.printf("%s:%d:%s%n", file.getPath(), lineNumber, line);
+					System.out.printf("%s:%d:%s\n", file.getPath(), lineNumber, line);
 				}
 			}
 		}

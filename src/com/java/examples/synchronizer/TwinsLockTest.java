@@ -7,7 +7,7 @@ import java.util.concurrent.locks.Lock;
  * @author: deadend
  * @date: 9:12 PM 10/18/16
  * @version: 1.0
- * @description: 测试TwinsLock同步组件，为什么经常只是某两个线程获得锁？？
+ * @description: 测试TwinsLock同步组件
  */
 
 

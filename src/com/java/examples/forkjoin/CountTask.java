@@ -25,7 +25,6 @@ public class CountTask extends RecursiveTask<Integer> {
 
     @Override
     protected Integer compute() {
-        System.out.println(start + " " + end);
         int sum = 0;
         boolean canCompute = (end - start) <= THRESHOLD;
         if (canCompute) {
