@@ -2,7 +2,7 @@
 Some examples while learning java.
 
 ### Structure
-.
+.  
 ├── basic  
 │   ├── datastructures  
 │   └── tools  
@@ -19,7 +19,7 @@ Some examples while learning java.
 │   ├── creationalpatterns  
 │   └── old  
 ├── examples  
-│   ├── deadlock  
+│   ├── deadlock  
 │   ├── forkjoin  
 │   ├── synchronizer  
 │   ├── test  
