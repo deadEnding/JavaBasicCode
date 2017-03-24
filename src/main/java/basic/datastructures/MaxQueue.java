@@ -1,4 +1,4 @@
-package basic.datastructures.minstack;
+package basic.datastructures;
 
 import java.util.Deque;
 import java.util.LinkedList;
