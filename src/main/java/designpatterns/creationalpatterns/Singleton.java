@@ -13,7 +13,7 @@ class Singleton1 {
 
     private Singleton1(){}
 
-    public Singleton1 getInstance() {
+    public static Singleton1 getInstance() {
         if (instance == null) {
             instance = new Singleton1();
         }
@@ -26,7 +26,7 @@ class Singleton2 {
 
     private Singleton2() {}
 
-    public synchronized Singleton2 getInstance() {
+    public static synchronized Singleton2 getInstance() {
         if (instance == null) {
             instance = new Singleton2();
         }
@@ -39,7 +39,7 @@ class Singleton3 {
 
     private Singleton3() {}
 
-    public Singleton3 getInstance() {
+    public static Singleton3 getInstance() {
         return instance;
     }
 }
@@ -49,7 +49,7 @@ class Singleton4 {
 
     private Singleton4() {}
 
-    public Singleton4 getInstance() {
+    public static Singleton4 getInstance() {
         if (instance == null) {
             synchronized (Singleton4.class) {
                 if (instance == null) {
@@ -68,7 +68,7 @@ class Singleton5 {
 
     private Singleton5() {};
 
-    public Singleton5 getInstance() {
+    public static Singleton5 getInstance() {
         return SingletonHolder.instance;
     }
 }

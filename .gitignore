@@ -13,3 +13,6 @@ hs_err_pid*
 
 # customize
 test/
+.idea/
+*.iml
+.DS_Store
